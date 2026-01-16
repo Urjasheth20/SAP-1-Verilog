@@ -50,6 +50,27 @@ Each component is implemented as an individual Verilog module.
    This completes the **Fetch and Decode cycle**.
 7. During the **Execution cycle**, the control unit generates appropriate control signals based on the opcode given above.
 ---
+### Sample provided here
+
+This sample program demonstrates execution of a simple SAP-1 instruction
+sequence. The program loads data from memory, performs addition\ subtraction as per the instruction provided, outputs
+the result, stores the result in memory address mentioned by the user, and halts execution.
+
+### Memory Contents
+
+```verilog
+initial begin
+    mem[0] = 8'b0000_0101; // LDA 4
+    mem[1] = 8'b0010_0110; // ADD 5
+    mem[2] = 8'b1110_0000; // OUT
+    mem[3] = 8'b0011_0111; // Store result in mem[7]
+    mem[4] = 8'b1111_0000; // HLT
+
+    mem[5] = 8'b0000_0100; // 04
+    mem[6] = 8'b0000_0010; // 02
+end
+```
+---
 ## References
 - Malvino, A. P., & Brown, J. A., *Digital Computer Electronics*, McGraw-Hill  
 - Ben Eater, *Build an 8-bit Computer from Scratch* (SAP-1 inspired architecture)  
